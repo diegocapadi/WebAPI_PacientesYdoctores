@@ -28,7 +28,7 @@ namespace WebAPI_PacientesYDoctores
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApiDrYPacienteDBContext>(o=>o.UseSqlServer(Configuration.GetConnectionString("defaultConnection")));
-            services.AddCors(o => o.AddDefaultPolicy(b => b.WithOrigins("").AllowAnyMethod().AllowAnyHeader()));
+            services.AddCors(o => o.AddDefaultPolicy(b => b.WithOrigins("https://localhost:44444/").AllowAnyMethod().AllowAnyHeader()));
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

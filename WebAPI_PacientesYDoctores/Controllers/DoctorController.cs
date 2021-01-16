@@ -8,6 +8,8 @@ using WebAPI_PacientesYDoctores.Entidades;
 
 namespace WebAPI_PacientesYDoctores.Controllers
 {
+    [Route("api/doctores")]
+    [ApiController]
     public class DoctorController:ControllerBase
     {
         private readonly ApiDrYPacienteDBContext dbcontext;
@@ -25,14 +27,6 @@ namespace WebAPI_PacientesYDoctores.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Doctor>> GetDoctores(long id)
-        {
-            var doctor = await dbcontext.Doctores.FindAsync(id);
-            if (doctor == null)
-                return NotFound();
-            return doctor;
-        }
-        [HttpGet("{id}")]
         public async Task<ActionResult<Doctor>> GetDoctor(long id)
         {
             var doctor = await dbcontext.Doctores.FindAsync(id);
@@ -40,6 +34,7 @@ namespace WebAPI_PacientesYDoctores.Controllers
                 return NotFound();
             return doctor;
         }
+  
 
         [HttpPost]
         public async Task<ActionResult> PostDoctor(Doctor doctor)
